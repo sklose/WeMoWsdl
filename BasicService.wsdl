@@ -67,6 +67,30 @@
           </xsd:all>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="GetLogFileURL">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLogFileURLResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="LOGURL" type="xsd:string" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetIconURL">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetIconURLResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="URL" type="xsd:string" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:schema>
   </wsdl:types>
 
@@ -105,6 +129,20 @@
     <wsdl:part name="GetSignalStrengthOutputPart" element="u:GetSignalStrengthResponse"/>
   </wsdl:message>
 
+  <wsdl:message name="GetLogFileURLInputMessage">
+    <wsdl:part name="GetLogFileURLInputPart" element="u:GetLogFileURL"/>
+  </wsdl:message>
+  <wsdl:message name="GetLogFileURLOutputMessage">
+    <wsdl:part name="GetLogFileURLOutputPart" element="u:GetLogFileURLResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="GetIconURLInputMessage">
+    <wsdl:part name="GetIconURLInputPart" element="u:GetIconURL"/>
+  </wsdl:message>
+  <wsdl:message name="GetIconURLOutputMessage">
+    <wsdl:part name="GetIconURLOutputPart" element="u:GetIconURLResponse"/>
+  </wsdl:message>
+
   <wsdl:portType name="BasicServicePortType">
     <wsdl:operation name="SetBinaryState">
       <wsdl:input message="SetBinaryStateInputMessage"/>
@@ -125,6 +163,14 @@
     <wsdl:operation name="GetSignalStrength">
       <wsdl:input message="GetSignalStrengthInputMessage"/>
       <wsdl:output message="GetSignalStrengthOutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogFileURL">
+      <wsdl:input message="GetLogFileURLInputMessage"/>
+      <wsdl:output message="GetLogFileURLOutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetIconURL">
+      <wsdl:input message="GetIconURLInputMessage"/>
+      <wsdl:output message="GetIconURLOutputMessage"/>
     </wsdl:operation>
   </wsdl:portType>
 
@@ -175,11 +221,29 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLogFileURL">
+      <soap:operation soapAction="urn:Belkin:service:basicevent:1#GetLogFileURL"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIconURL">
+      <soap:operation soapAction="urn:Belkin:service:basicevent:1#GetIconURL"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
 
   <wsdl:service name="BasicService">
     <wsdl:port name="BasicServicePort" binding="BasicServiceBinding">
-      <soap:address location="http://192.168.1.101:49153/upnp/control/basicevent1"/>
+      <soap:address location="http://localhost:49153/upnp/control/basicevent1"/>
     </wsdl:port>
   </wsdl:service>
 
