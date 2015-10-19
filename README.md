@@ -1,7 +1,7 @@
 WeMoWsdl
 ========
 
-This project provides WSDL definitions that can be used to generate client-side code for controlling Belin WeMo devices.
+This project provides WSDL definitions that can be used to generate client-side code for controlling Belkin WeMo devices.
 
 Example usage with C#
 ---------------------
